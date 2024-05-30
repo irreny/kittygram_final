@@ -1,13 +1,14 @@
-# flake8: noqa
 import os
 from pathlib import Path
-from dotenv import load_dotenv, find_dotenv
+
+from django.core.management.utils import get_random_secret_key
+from dotenv import find_dotenv, load_dotenv
 
 load_dotenv(find_dotenv())
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = get_random_secret_key()
 
 DEBUG = os.getenv('DEBUG_MODE', str(False)).lower() == 'true'
 
