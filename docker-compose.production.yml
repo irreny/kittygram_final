@@ -3,6 +3,7 @@ version: '3'
 volumes:
   pg_data:
   static:
+  media:
 
 services:
   db:
@@ -14,24 +15,24 @@ services:
     image: irreny/kittygram_backend
     env_file: .env
     volumes:
-      - static:/static
-      - media:/app/media
+      - static:/backend_static/
+      - media:/media/
     depends_on:
       - db
 
   frontend:
     image: irreny/kittygram_frontend
     env_file: .env
-    command: cp -r /app/build/. /static/
+    command: cp -r /app/build/. /frontend_static/
     volumes:
-      - static:/static
+      - static:/frontend_static/
 
   gateway:
     image: irreny/kittygram_gateway
     env_file: .env
     volumes:
-      - static:/static
-      - media:/app/media
+      - static:/staticfiles/
+      - media:/media/
     depends_on:
       - backend
       - frontend
