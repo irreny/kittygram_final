@@ -29,7 +29,7 @@ services:
     image: irreny/kittygram_gateway
     env_file: .env
     volumes:
-      - static:/static/
+      - static:/static
     depends_on:
       - backend
       - frontend
