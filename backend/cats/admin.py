@@ -1,4 +1,7 @@
-from cats import models
+from cats.models import Cat
 from django.contrib import admin
 
-admin.site.register(models.Cat)
+
+@admin.register(Cat)
+class CatAdmin(admin.ModelAdmin):
+    pass
