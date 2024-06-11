@@ -1,16 +1,16 @@
 import os
 from pathlib import Path
 
-# from django.core.management.utils import get_random_secret_key
-# from dotenv import load_dotenv
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
 
-# load_dotenv()
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
-DEBUG = True
+DEBUG = str(os.getenv('DEBUG', str(False))).lower() == 'true'
 
 ALLOWED_HOSTS = ['158.160.88.118', '127.0.0.1', 'localhost', 'kittygramfall.zapto.org']
 
@@ -28,6 +28,7 @@ ALLOWED_HOSTS = ['158.160.88.118', '127.0.0.1', 'localhost', 'kittygramfall.zapt
 
 # DEBUG = str(os.getenv('DEBUG', str(False))).lower() == 'true'
 
+# SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
 
 INSTALLED_APPS = [
     'django.contrib.admin',
